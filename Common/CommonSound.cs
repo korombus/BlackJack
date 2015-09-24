@@ -23,7 +23,7 @@ public class CommonSound : MonoBehaviour {
      *  @author : コロソブス(korombus)
      *******************************************************/
     public void Play(AudioClip clip = null) {
-        if (this.audio == null) {
+        if (this.GetComponent<AudioSource>() == null) {
             Debug.Log("NO AUDIO, Please confirm whether the GameObject with this script exists in this Scene");
             return;
         }
@@ -34,8 +34,8 @@ public class CommonSound : MonoBehaviour {
         }
 
         // 音源データがある場合のみ再生
-        if (this.audio.clip != null) {
-            this.audio.Play();
+        if (this.GetComponent<AudioSource>().clip != null) {
+            this.GetComponent<AudioSource>().Play();
         } else {
             Debug.Log("NO Audio data");
         }
@@ -76,8 +76,8 @@ public class CommonSound : MonoBehaviour {
      *  @author : コロソブス(korombus)
      *******************************************************/
     private void DesignateMusicPlay(AudioClip clip) {
-        this.audio.clip = clip;
-        this.audio.Play();
+        this.GetComponent<AudioSource>().clip = clip;
+        this.GetComponent<AudioSource>().Play();
     }
 
     /*******************************************************/
@@ -91,7 +91,7 @@ public class CommonSound : MonoBehaviour {
         if (value > 1.0f || value < 0) {
             value = 1.0f;
         }
-        this.audio.volume = value;
+        this.GetComponent<AudioSource>().volume = value;
     }
 
     /*******************************************************/
@@ -102,8 +102,8 @@ public class CommonSound : MonoBehaviour {
      *  @author : コロソブス(korombus)
      *******************************************************/
     public void Stop() {
-        if (this.audio.isPlaying) {
-            this.audio.Stop();
+        if (this.GetComponent<AudioSource>().isPlaying) {
+            this.GetComponent<AudioSource>().Stop();
         }
     }
 
@@ -115,6 +115,6 @@ public class CommonSound : MonoBehaviour {
      *  @author : コロソブス(korombus)
      *******************************************************/
     public bool CheckPlayingAudio() {
-        return this.audio.isPlaying;
+        return this.GetComponent<AudioSource>().isPlaying;
     }
 }

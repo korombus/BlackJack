@@ -126,7 +126,7 @@ public class CommonUtil {
     /// <param name="obj">オブジェクト名</param>
     public static void SetTexture(Texture2D texture, GameObject obj) {
         if (obj == null) { return; }
-        obj.renderer.material.mainTexture = texture;
+        obj.GetComponent<Renderer>().material.mainTexture = texture;
     }
 
     /// <summary>

@@ -57,7 +57,7 @@ public class CommonSys : MonoBehaviour {
     public bool SetTexture(Texture2D tex, GameObject obj) {
         // テクスチャがなければ返す
         if (tex == null || obj == null) { return false; }
-        obj.renderer.material.mainTexture = tex;
+        obj.GetComponent<Renderer>().material.mainTexture = tex;
 
         // テクスチャをキャッシュにセット
         cache.set(tex.name, tex);

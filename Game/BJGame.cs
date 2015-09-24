@@ -98,10 +98,10 @@ public class BJGame : BlackJackSys {
         // 勝敗判定
         if (battle) {
             if (nowTotalScore <= BLACK_JACK && (nowTotalScore > nowDealerTotalScor || nowDealerTotalScor > BLACK_JACK)) {
-                Debug.Log("WIN");
+                Result.GetResult().SetData("Win!");
             }
             else {
-                Debug.Log("LOSE");
+                Result.GetResult().SetData("Lose");
             }
             // 判定が出たら決戦フラグを折る
             battle = false;
@@ -158,6 +158,7 @@ public class BJGame : BlackJackSys {
                 }
                 break;
             case BJButton.ButtonVal.END:
+                Result.GetResult().OnClickEnd();
                 // シーン読みなおし
                 StartCoroutine(ChengeScene());
                 break;
